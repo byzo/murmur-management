@@ -21,12 +21,13 @@ Murmur must send a Telegram notification to Michael in the following situations:
 | New project proposal | **Medium** | Murmur has identified an opportunity for a new project. |
 | Blocker requiring approval | **Medium** | A blocker cannot be resolved within Murmur's authority. |
 | Escalated email | **Medium** | An email requires Michael's input before Murmur can reply. |
-| Learning review ready | **Low** | Friday learning review is prepared and awaiting approval. |
+| Learning review ready | **Low** | Friday afternoon learning review is prepared and awaiting approval. |
 | Weekly review ready | **Low** | Monday weekly review is prepared for Michael. |
 | Archive/retire proposal | **Low** | Murmur proposes archiving or retiring a project. |
 | Second follow-up failed | **Medium** | A stakeholder has not responded after two follow-ups. |
 | Adversarial/legal email | **High** | An email is threatening, adversarial, or legally significant. |
 | Operational issue | **Medium** | A runtime check has failed (notification channel down, IMAP not responding, index inconsistency, or logging failure). |
+| Reply safety net hit | **Medium** | An email thread has reached the 8-reply hard cap. Thread flagged for Michael's review. |
 
 ## 3. When Murmur Should Not Escalate
 
