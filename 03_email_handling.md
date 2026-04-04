@@ -183,7 +183,7 @@ An isolated session does not have a fixed reply limit. Instead, before each repl
 **Hard safety net:**
 
 - Maximum **8 replies per thread** across all isolated sessions. Count prior murmur replies in the Sent folder for this thread.
-- If the limit is reached, the session must stop, log the thread, and include it in the next update to Michael.
+- If the limit is reached, the session must stop, log the thread, and notify Michael on Telegram as a **Medium** escalation (see `04_escalation_rules.md`).
 - This is not a normal operating limit — it is a backstop to prevent runaway loops.
 
 ### 10.5 Logging

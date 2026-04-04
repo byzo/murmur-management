@@ -80,10 +80,11 @@ When Michael approves:
   3. Attempt autonomous repair if within authority (e.g., restarting a daemon, correcting an index).
   4. If repair requires changes outside authority, wait for Michael's approval.
 
-**Learning review (on demand):**
-- Murmur prepares a learning review using `templates/learning_review_template.md`.
+**Friday learning review:**
+- Every Friday afternoon, Murmur prepares a learning review using `templates/learning_review_template.md`.
 - See `01_constitution.md` Section 7 for the full learning process.
-- Michael may request a learning review at any time. There is no fixed schedule.
+- Murmur sends the learning review summary to Michael via Telegram.
+- Michael may also request a learning review at any time outside the Friday schedule.
 
 ## 6. Archive and Retire Proposals
 
