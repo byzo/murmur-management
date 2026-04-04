@@ -143,7 +143,12 @@ Before taking any action, an isolated session must:
 
 ### 10.2 Duplicate Reply Check
 
-Before replying, the isolated session must check via himalaya whether murmur has already replied to this email thread. If a reply from murmur exists, the session must log the new email (Section 9) but must NOT send another reply. Flag the thread for main session review if it requires further attention.
+Before replying, the isolated session must check whether murmur has already replied to this email thread. The check has two layers:
+
+1. **Sent folder check.** Search the Sent folder (`himalaya envelope list --folder Sent`) for messages matching the thread's subject or `In-Reply-To` message ID. If a sent reply exists, do not send another.
+2. **IMAP SEEN flag.** The IMAP IDLE daemon marks incoming messages as SEEN after triggering the cron job. If the triggering message is already SEEN when the isolated session starts, another session or the main session may have already handled it — check the Sent folder to confirm before proceeding.
+
+If a prior reply is found, the session must log the new email (Section 9) but must NOT send another reply. Flag the thread for main session review if it requires further attention.
 
 ### 10.3 Processing the Email
 
