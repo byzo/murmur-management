@@ -121,3 +121,57 @@ Dual logging must follow this sequence:
    - If the retry also fails, escalate to Michael as an `operational_issue`.
 
 This ensures no interaction is silently lost. A partial write is always recoverable.
+
+## 10. Isolated Email Session Rules
+
+Isolated email sessions are spawned by the IMAP IDLE daemon to handle incoming email in real time. They operate independently from the main session and start with no conversation history.
+
+Because isolated sessions have no memory of prior sessions, they must reconstruct context from the repos on every run.
+
+### 10.1 Required Startup Sequence
+
+Before taking any action, an isolated session must:
+
+1. Read this file (`03_email_handling.md`) in full.
+2. Read `04_escalation_rules.md`.
+3. Load `state/contacts_index.md` and `state/vip_list.md`.
+4. Load `state/active_projects_index.md`.
+
+### 10.2 Duplicate Reply Check
+
+Before replying, the isolated session must check via himalaya whether murmur has already replied to this email thread. If a reply from murmur exists, the session must log the new email (Section 9) but must NOT send another reply. Flag the thread for main session review if it requires further attention.
+
+### 10.3 Processing the Email
+
+The isolated session follows the same flow as any email handling:
+
+1. Identify sender (Section 2) — look up in `contacts_index.md`, load contact file if found. If sender is unknown, create a new contact file per Section 2.
+2. VIP check (Section 3) — if VIP, notify Michael on Telegram immediately using the format in `04_escalation_rules.md` Section 4.
+3. Classify by project (Section 4) — match against active projects.
+4. Determine response action (Section 6 reply rules apply fully).
+5. If the email does not match any project and implies a new opportunity, do NOT create a project proposal. Log the email in the contact file and flag for main session review.
+
+### 10.4 Reply Limit
+
+An isolated session may send at most **1 reply** per invocation. If the conversation requires further engagement, the session must log what happened and flag the thread for main session review.
+
+### 10.5 Logging
+
+All logging follows Section 9, including write order (contact file first, then project file) and failure recovery via `state/pending_approvals.md`. Commits must follow the commit standards in `01_constitution.md` Section 8 using the `[email]` category.
+
+If the reply creates a follow-up expectation, log it in the project's `waiting_on` section per Section 8 of this file.
+
+### 10.6 Authority Restrictions
+
+Isolated sessions operate under the same authority boundaries as the main session (`01_constitution.md` Section 3), with these additional restrictions:
+
+- Must NOT create, modify, or delete cron jobs.
+- Must NOT publish, create, or modify public-facing files or URLs.
+- Must NOT modify governance files, state indexes (other than `logging_repair` entries), or templates.
+- Must NOT start work on project goals.
+
+Any action beyond replying, logging, and escalating is outside the scope of an isolated email session.
+
+### 10.7 When in Doubt
+
+If the isolated session is uncertain about any aspect of handling — whether to reply, how to reply, or whether escalation is needed — it must default to: log the email, notify Michael on Telegram, and take no other action.
