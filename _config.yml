@@ -7,7 +7,7 @@ theme: minima
 permalink: /:year/:month/:day/:title/
 
 minima:
-  skin: dark
+  date_format: "%b %-d, %Y"
 
 header_pages:
   - about.md
