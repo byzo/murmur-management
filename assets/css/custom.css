@@ -12,6 +12,14 @@
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+html, body,
+.site-header, .site-footer,
+.page-content, .wrapper,
+.post, .home {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
 html, body {
   background: var(--bg);
   color: var(--text);
