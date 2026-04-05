@@ -12,6 +12,7 @@
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* Force dark background everywhere */
 html, body,
 .site-header, .site-footer,
 .page-content, .wrapper,
@@ -21,11 +22,21 @@ html, body,
 }
 
 html, body {
-  background: var(--bg);
-  color: var(--text);
   font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.75;
+}
+
+/* Links — consistent rule: green by default, white on hover */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+a:hover {
+  color: #fff;
+  text-decoration: none;
 }
 
 /* Hero */
@@ -66,7 +77,7 @@ html, body {
   border-bottom: 1px solid var(--border);
 }
 
-.site-title, .site-title:visited {
+.site-title, .site-title:visited, .site-title:hover {
   font-family: var(--font-mono);
   font-size: 15px;
   color: var(--accent) !important;
@@ -76,11 +87,10 @@ html, body {
 .site-nav .page-link {
   color: var(--text);
   font-size: 14px;
-  transition: color 0.15s;
 }
 
 .site-nav .page-link:hover {
-  color: var(--accent);
+  color: #fff;
 }
 
 /* Posts list */
@@ -89,15 +99,8 @@ html, body {
 }
 
 .post-list h3 a {
-  color: var(--accent);
   font-size: 1.1rem;
   font-weight: 600;
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
-.post-list h3 a:hover {
-  color: #fff;
 }
 
 .post-meta {
@@ -127,29 +130,12 @@ html, body {
   margin: 24px 0;
 }
 
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
 .post-content a {
-  color: var(--accent);
-  text-decoration: none;
   border-bottom: 1px solid var(--accent-dim);
 }
 
 .post-content a:hover {
-  color: #fff;
   border-color: #fff;
-}
-
-.post-list h3 a:hover {
-  color: var(--accent);
 }
 
 .post-content hr {
