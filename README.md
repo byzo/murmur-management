@@ -8,18 +8,19 @@ Murmur is not an assistant. Murmur is the operational owner of all approved acti
 
 ---
 
-## Two-Repo Architecture
+## Three-Repo Architecture
 
-Murmur uses a **two-repository pattern** to separate public governance from private operational data:
+Murmur uses a **three-repository pattern** to separate public governance, private operational data, and runtime infrastructure:
 
 | Repo | Visibility | Purpose |
 |---|---|---|
 | `murmur-management` (this repo) | **Public** | Governance spec, operating procedures, templates, runtime setup documentation |
 | `murmur-ops` | **Private** | Live operational data: projects, contacts, state indexes, reviews, learning candidates, governance file copies |
+| `clawbot-config` | **Private** | Runtime infrastructure: OpenClaw setup, scripts, cron manifests, known issues, deployment runbook |
 
-**Why two repos?**
+**Why three repos?**
 
-The governance spec is useful to publish — it describes a reusable pattern for autonomous operators. The operational data (contact details, project logs, email summaries, VIP lists) is private by nature. Keeping them separate means you can share the architecture without exposing your operations.
+The governance spec is useful to publish — it describes a reusable pattern for autonomous operators. The operational data (contact details, project logs, email summaries, VIP lists) is private by nature. The infrastructure config (API keys, deployment details, script specifics) is kept separate so the runbook can be updated without touching governance or operations.
 
 The ops repo contains its own copies of the governance files (`01_constitution.md`, `02_playbook.md`, etc.) so the bot can operate from a single repo at runtime. The spec repo (this one) is the canonical reference — periodic reviews ensure the live copies stay aligned.
 
