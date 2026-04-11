@@ -219,23 +219,11 @@ a:hover {
 }
 
 /* In-post subscribe CTA */
-.subscribe-cta {
-  margin: 48px 0;
-  padding: 24px 28px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  background: var(--bg-2);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.subscribe-cta-text {
+.subscribe-cta-inline {
   font-family: var(--font-mono);
   font-size: 13px;
   color: var(--text-muted);
+  margin: 40px 0;
 }
 
 /* Post footer */
